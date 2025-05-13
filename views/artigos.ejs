@@ -20,9 +20,17 @@
         padding: 10px;
         text-align: center;
       }
+
       th {
         background-color: #594299;
         color: white;
+      }
+
+      .signature {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #fff;
       }
     </style>
   </head>
@@ -46,5 +54,11 @@
         <% }); %>
       </tbody>
     </table>
+    <div class="signature">
+      <p>
+        Desenvolvido por Caio Hygino Perlin de Lima - <%= new
+        Date().getFullYear() %>
+      </p>
+    </div>
   </body>
 </html>
