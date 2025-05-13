@@ -43,7 +43,7 @@ const artigoController = {
     const artigo = artigos.find((art) => art.titulo === titulo);
 
     if (!artigo) {
-      return res.status(404).send("Artigo não encontrado.");
+      return res.status(404).send(`Artigo "${titulo}" não encontrado`);
     }
 
     res.status(200).json(artigo);
@@ -65,7 +65,7 @@ const artigoController = {
     const index = artigos.findIndex((art) => art.titulo === titulo);
 
     if (index === -1) {
-      return res.status(404).send("Artigo não encontrado.");
+      return res.status(404).send(`Artigo "${titulo}" não encontrado.`);
     }
 
     artigos.splice(index, 1);
