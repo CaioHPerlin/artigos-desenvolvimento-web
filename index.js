@@ -5,10 +5,12 @@ const PORT = 3000;
 
 const app = express();
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// EJS
 app.set("view engine", "ejs");
 
 // Routes

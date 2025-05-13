@@ -38,9 +38,8 @@ const artigoController = {
     res.status(200).render("artigos", { artigos });
   },
 
-  async findByTitulo(req, res) {
+  async findByTitle(req, res) {
     const { titulo } = req.params;
-
     const artigo = artigos.find((art) => art.titulo === titulo);
 
     if (!artigo) {
@@ -50,21 +49,19 @@ const artigoController = {
     res.status(200).json(artigo);
   },
 
-  async updateByTitulo(req, res) {
-    const index = artigos.findIndex((art) => art.titulo === req.params.titulo);
+  async updateByTitle(req, res) {
+    const { titulo } = req.params;
+    const artigoEncontrado = artigos.find((artigo) => artigo.titulo === titulo);
 
-    if (index === -1) {
-      return res.status(404).send("Artigo não encontrado.");
+    if (!artigoEncontrado) {
+      return res.status(404).send(`Artigo "${titulo}" não encontrado`);
     }
 
-    const { titulo, descricao, paginas } = req.body;
-    artigos[index] = { titulo, descricao, paginas };
-    res.status(200).json(artigos[index]);
+    return res.status(200).json(artigoEncontrado);
   },
 
-  async deleleteByTitulo(req, res) {
+  async deleleteByTitle(req, res) {
     const { titulo } = req.params;
-
     const index = artigos.findIndex((art) => art.titulo === titulo);
 
     if (index === -1) {
