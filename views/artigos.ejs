@@ -32,6 +32,10 @@
         font-size: 14px;
         color: #fff;
       }
+
+      .not-found {
+        padding: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -41,14 +45,19 @@
         <tr>
           <th>Título</th>
           <th>Descrição</th>
+          <th>Autor</th>
           <th>Páginas</th>
         </tr>
       </thead>
       <tbody>
+        <% if (artigos.length === 0) { %>
+          <td class="not-found" colspan="3">Nenhum artigo encontrado.</td>
+        <% } %>
         <% artigos.forEach(h => { %>
         <tr>
           <td><%= h.titulo %></td>
           <td><%= h.descricao %></td>
+          <td><%= h.autor %></td>
           <td><%= h.paginas %></td>
         </tr>
         <% }); %>
